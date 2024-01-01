@@ -4,6 +4,15 @@
 .App {
   text-align: center;
 }
+.th-bg{
+  background-color: #5b8ac0;
+}
+.tr-o-bg{
+  background-color: #bbd4f2;
+}
+.tr-e-bg{
+background-color: #dfe8f5;
+}
 
 .App-logo {
   height: 40vmin;

@@ -1,10 +1,11 @@
 import './App.css';
-import Welcome from './pages/Welcome';
+
+import ViewAttendence from './pages/ViewAttendence';
 
 function App() {
   return (
     <div>
-      <Welcome/>
+      <ViewAttendence />
     </div>
   );
 }
