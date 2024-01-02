@@ -1,8 +1,5 @@
-// StudentMarks.js
 import React from "react";
 import SemesterAttendence from "./SemesterAttendence";
-import InternalMarksDetails from "./SemesterInternalMarks";
-
 const AttendenceDetails = ({ semestersData, col }) => {
   const currentSemester = 1;
 
