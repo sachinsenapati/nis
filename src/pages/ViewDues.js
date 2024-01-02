@@ -58,11 +58,11 @@ const ViewDues = () => {
           <span className="text-blue-700 font-bold">fees@nist.edu</span> with
           the Subject: "Payment of Academic Fees/Mess Dues" :-
         </p>
-        {/* <DetailsCard name="Payment Details Format" details={paymentDetails} />
+        <DetailsCard name="Payment Details Format" details={paymentDetails} />
         <DetailsCard
           name="Fees Deposit Account Details"
           details={bankDetails}
-        /> */}
+        />
         <p className="text-orange-600 font-bold text-xl py-2">
           No Mess Dues Found
         </p>
