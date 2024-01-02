@@ -42,6 +42,14 @@ const Navbar2 = () => {
           link: "/desk/view-marks",
           name: "View Internal Marks",
         },
+        {
+          link: "/desk/view-dues",
+          name: "View Dues",
+        },
+        {
+          link: "/desk/view-clearnance",
+          name: "View Internal Marks",
+        },
       ],
     },
     {

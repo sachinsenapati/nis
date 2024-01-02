@@ -31,30 +31,26 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between h-16 md:h-20 px-5 lg:px-[70px]  ">
-      <div className="flex items-center">
-        
-      </div>
+      <div className="flex items-center"></div>
 
       {/* Mobile Menu */}
       <div className="md:hidden">
         {isMenuOpen === true ? (
-          <IoMdClose className="text-3xl cursor-pointer" onClick={toggleMenu} />
+          <IoMdClose
+            className="text-3xl text-white cursor-pointer"
+            onClick={toggleMenu}
+          />
         ) : (
           <GiHamburgerMenu
-            className="text-2xl cursor-pointer"
+            className="text-2xl text-white cursor-pointer"
             onClick={toggleMenu}
           />
         )}
         {isMenuOpen && (
           <ul className="absolute h-80 top-16 left-0 right-0 flex flex-col justify-evenly items-center bg-white shadow-md pb-5 z-20 ">
             {navmenu.map((menu) => {
-              return (
-                <li key={menu.name}>
-                    {menu.name}
-                </li>
-              );
+              return <li key={menu.name}>{menu.name}</li>;
             })}
-
           </ul>
         )}
       </div>
@@ -69,7 +65,6 @@ const Navbar = () => {
             </li>
           );
         })}
-
       </ul>
     </nav>
   );
