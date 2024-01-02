@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -63,7 +64,8 @@ const Navbar = () => {
         {navmenu.map((menu, idx) => {
           return (
             <li key={idx}>
-                {menu.name}
+              <Link to={menu.link}></Link>
+              {menu.name}
             </li>
           );
         })}

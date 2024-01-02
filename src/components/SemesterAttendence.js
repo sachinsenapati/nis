@@ -6,6 +6,7 @@ const SemesterAttendence = ({
   semesterNumber,
   attendeceData,
   currentSemester,
+  col
 }) => {
   const isCurrentSemester = semesterNumber === currentSemester;
   const [isExpanded, setIsExpanded] = useState(isCurrentSemester);
@@ -26,11 +27,9 @@ const SemesterAttendence = ({
       {isExpanded && (
         <>
           <div className="th-bg border-b-2 border-white text-white grid grid-cols-5 gap-0 text-xs">
-            <div className="p-2 border-r border-white">Course Code</div>
-            <div className="p-2 border-r border-white">Course Name</div>
-            <div className="p-2 border-r border-white">Total Classes</div>
-            <div className="p-2 border-r border-white">Classes Attended</div>
-            <div className="p-2">Percentage</div>
+            {col.map((column) => (
+              <div className="p-2 border-r border-white">{column}</div>
+            ))}
           </div>
 
           {attendeceData.map((subject, index) => (

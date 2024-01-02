@@ -1,9 +1,10 @@
 // StudentMarks.js
 import React from "react";
 import SemesterAttendence from "./SemesterAttendence";
+import InternalMarksDetails from "./SemesterInternalMarks";
 
-const StudentDetails = ({ semestersData }) => {
-    const currentSemester = 1;
+const AttendenceDetails = ({ semestersData, col }) => {
+  const currentSemester = 1;
 
   return (
     <div>
@@ -13,10 +14,11 @@ const StudentDetails = ({ semestersData }) => {
           semesterNumber={index + 1}
           attendeceData={semester}
           currentSemester={currentSemester}
+          col={col}
         />
       ))}
     </div>
   );
 };
 
-export default StudentDetails;
+export default AttendenceDetails;
