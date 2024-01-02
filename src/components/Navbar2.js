@@ -48,7 +48,7 @@ const Navbar2 = () => {
         },
         {
           link: "/desk/view-clearnance",
-          name: "View Internal Marks",
+          name: "View Clearance Details",
         },
       ],
     },
