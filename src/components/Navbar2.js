@@ -21,12 +21,9 @@ const Navbar2 = () => {
 
   const openStudentHandbook = () => {
     window.open(studentHandbook, "_blank");
-    toggleMenu(); // Close the menu after clicking the link
+    toggleMenu(); 
   };
 
-  const closePdfViewer = () => {
-    // No need for any specific action here, as we're using window.open
-  };
 
   const navmenu = [
     {
@@ -105,7 +102,7 @@ const Navbar2 = () => {
                     } else {
                       toggleMenu();
                     }
-                    menuItem.onClick && menuItem.onClick(); // Call onClick if defined
+                    menuItem.onClick && menuItem.onClick(); 
                   }}
                 >
                   {menuItem.name === "Student Desk" ? (
