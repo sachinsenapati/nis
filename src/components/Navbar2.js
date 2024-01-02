@@ -1,9 +1,11 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import logo from "../assests/nis_logo.png";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { IoMdClose } from "react-icons/io";
 import { BsCaretRightFill, BsCaretDownFill } from "react-icons/bs";
+
+import logo from "../assests/nis_logo.png";
+import studentHandbook from "../assests/StudentHandbookR2.1.pdf";
 
 const Navbar2 = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
@@ -15,6 +17,15 @@ const Navbar2 = () => {
 
   const toggleSubMenu = () => {
     setSubMenuOpen(!isSubMenuOpen);
+  };
+
+  const openStudentHandbook = () => {
+    window.open(studentHandbook, "_blank");
+    toggleMenu(); // Close the menu after clicking the link
+  };
+
+  const closePdfViewer = () => {
+    // No need for any specific action here, as we're using window.open
   };
 
   const navmenu = [
@@ -53,8 +64,8 @@ const Navbar2 = () => {
       ],
     },
     {
-      link: "/handbook",
       name: "Student Handbook",
+      onClick: openStudentHandbook,
     },
   ];
 
@@ -94,6 +105,7 @@ const Navbar2 = () => {
                     } else {
                       toggleMenu();
                     }
+                    menuItem.onClick && menuItem.onClick(); // Call onClick if defined
                   }}
                 >
                   {menuItem.name === "Student Desk" ? (
@@ -108,7 +120,12 @@ const Navbar2 = () => {
                       </span>
                     </>
                   ) : (
-                    <Link to={menuItem.link}>{menuItem.name}</Link>
+                    <span
+                      onClick={() => menuItem.onClick && menuItem.onClick()}
+                      style={{ cursor: "pointer" }}
+                    >
+                      {menuItem.name}
+                    </span>
                   )}
 
                   {menuItem.name === "Student Desk" && isSubMenuOpen && (
