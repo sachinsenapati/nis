@@ -9,30 +9,78 @@ import studentHandbook from "../assests/StudentHandbookR2.1.pdf";
 
 const Navbar2 = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const [isSubMenuOpen, setSubMenuOpen] = useState(false);
+  const [isStudentDeskSubMenuOpen, setStudentDeskSubMenuOpen] = useState(false);
+  const [isAcademicSubMenuOpen, setAcademicSubMenuOpen] = useState(false);
+  const [isAdministrativeSubMenuOpen, setAdministrativeSubMenuOpen] =
+    useState(false);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
   };
 
-  const toggleSubMenu = () => {
-    setSubMenuOpen(!isSubMenuOpen);
+  const toggleStudentDeskSubMenu = () => {
+    setStudentDeskSubMenuOpen(!isStudentDeskSubMenuOpen);
+  };
+
+  const toggleAcademicSubMenu = () => {
+    setAcademicSubMenuOpen(!isAcademicSubMenuOpen);
+  };
+
+  const toggleAdministrativeSubMenu = () => {
+    setAdministrativeSubMenuOpen(!isAdministrativeSubMenuOpen);
   };
 
   const openStudentHandbook = () => {
     window.open(studentHandbook, "_blank");
-    toggleMenu(); 
+    toggleMenu();
   };
-
 
   const navmenu = [
     {
       link: "/",
       name: "Academic",
+      onClick: toggleAcademicSubMenu,
+      subMenu: [
+        {
+          link: "/academic/elective-course",
+          name: "Elective Course",
+        },
+        {
+          link: "/academic/final-exam",
+          name: "Final Exam",
+        },
+        {
+          link: "/academic/knowledge-assessment",
+          name: "Knowledge Assessment",
+        },
+        {
+          link: "/academic/library-information-system",
+          name: "Library Information System",
+        },
+        {
+          link: "/academic/online-feedback-system",
+          name: "Online Feedback System",
+        },
+      ],
     },
     {
       link: "/adminstrative",
       name: "Administrative",
+      onClick: toggleAdministrativeSubMenu,
+      subMenu: [
+        {
+          link: "/administrative/grievance-call",
+          name: "Grievance Call",
+        },
+        {
+          link: "/administrative/internship-management",
+          name: "Internship Management System",
+        },
+        {
+          link: "/administrative/project-management",
+          name: "Project Management System",
+        },
+      ],
     },
     {
       link: "/complaint",
@@ -41,6 +89,7 @@ const Navbar2 = () => {
     {
       link: "/desk",
       name: "Student Desk",
+      onClick: toggleStudentDeskSubMenu,
       subMenu: [
         {
           link: "/desk/view-attendance",
@@ -92,24 +141,41 @@ const Navbar2 = () => {
                 <li
                   key={menuItem.name}
                   className={`text-white text-lg py-2 cursor-pointer ${
-                    menuItem.name === "Student Desk" && isSubMenuOpen
+                    (menuItem.name === "Student Desk" &&
+                      isStudentDeskSubMenuOpen) ||
+                    (menuItem.name === "Academic" && isAcademicSubMenuOpen) ||
+                    (menuItem.name === "Administrative" &&
+                      isAdministrativeSubMenuOpen)
                       ? "font-bold"
                       : ""
                   }`}
                   onClick={() => {
                     if (menuItem.name === "Student Desk") {
-                      toggleSubMenu();
+                      toggleStudentDeskSubMenu();
+                    } else if (menuItem.name === "Academic") {
+                      toggleAcademicSubMenu();
+                    } else if (menuItem.name === "Administrative") {
+                      toggleAdministrativeSubMenu();
                     } else {
                       toggleMenu();
                     }
-                    menuItem.onClick && menuItem.onClick(); 
+                    menuItem.onClick && menuItem.onClick();
                   }}
                 >
-                  {menuItem.name === "Student Desk" ? (
+                  {menuItem.name === "Student Desk" ||
+                  menuItem.name === "Academic" ||
+                  menuItem.name === "Administrative" ? (
                     <>
                       {menuItem.name}
                       <span>
-                        {isSubMenuOpen ? (
+                        {menuItem.name === "Student Desk" &&
+                        isStudentDeskSubMenuOpen ? (
+                          <BsCaretDownFill className="inline ml-1" />
+                        ) : menuItem.name === "Academic" &&
+                          isAcademicSubMenuOpen ? (
+                          <BsCaretDownFill className="inline ml-1" />
+                        ) : menuItem.name === "Administrative" &&
+                          isAdministrativeSubMenuOpen ? (
                           <BsCaretDownFill className="inline ml-1" />
                         ) : (
                           <BsCaretRightFill className="inline ml-1" />
@@ -125,7 +191,11 @@ const Navbar2 = () => {
                     </span>
                   )}
 
-                  {menuItem.name === "Student Desk" && isSubMenuOpen && (
+                  {((menuItem.name === "Student Desk" &&
+                    isStudentDeskSubMenuOpen) ||
+                    (menuItem.name === "Academic" && isAcademicSubMenuOpen) ||
+                    (menuItem.name === "Administrative" &&
+                      isAdministrativeSubMenuOpen)) && (
                     <ul className="pl-4">
                       {menuItem.subMenu.map((subMenuItem) => (
                         <li
